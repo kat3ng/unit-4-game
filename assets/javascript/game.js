@@ -5,59 +5,53 @@ $(document).ready(function () {
     var losses = 0;
     var myNumber = 0;
 
-    var gem1 = 0;
-    var gem2 = 0;
-    var gem3 = 0;
-    var gem4 = 0;
 
     //wrapping a startGame option aroud functions -- call start game
 
     function startGame() {
         //create randomly generated number
-        var randomNumber = Math.floor(Math.random() * (120 - 19)) + 19;
-        $("#random-number").text(randomNumber);
-        console.log(randomNumber);
+        var targetNumber = Math.floor(Math.random() * (120 - 19)) + 19;
+        $("#target-number").text(targetNumber);
+        console.log(targetNumber);
 
         // assign random number to crystals
-        var gemRandomValues = [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-        ];
-        //increment upon button clicks
-        var gemValue = gemRandomValues[Math.round(gemRandomValues.length * Math.random())];
-
+        var gem1 = Math.floor(Math.random() * 11 + 1);
         $("#gem1-btn").on("click", function () {
-            gem1 += gemValue;
-            console.log(gemValue);
+            console.log(gem1);
+            //add crystal value to myNumber
+            gem1Value = parseInt(gem1);
+            gem1Value += myNumber;
         })
+
+        var gem2 = Math.floor(Math.random() * 11 + 1); console.log(gem2);
         $("#gem2-btn").on("click", function () {
-            myNumber += gemValue;
-            console.log(gemValue);
+            console.log(gem2);
+            //add crystal value to myNumber
+            gem1Value = parseInt(gem2);
+            gem1Value += myNumber;
         })
 
+        var gem3 = Math.floor(Math.random() * 11 + 1); console.log(gem3);
         $("#gem3-btn").on("click", function () {
-            myNumber += gemValue;
-            console.log(gemValue);
+            console.log(gem3);
+            //add crystal value to myNumber
+            gem1Value = parseInt(gem3);
+            gem1Value += myNumber;
         })
 
+        var gem4 = Math.floor(Math.random() * 11 + 1); console.log(gem4);
         $("#gem4-btn").on("click", function () {
-            myNumber += gemValue;
-            console.log(gemValue);
+            console.log(gem4);
+            //add crystal value to myNumber
+            gem1Value = parseInt(gem4);
+            gem1Value += myNumber;
         })
-        //Game Logic
-        if (myNumber === randomNumber) {
-            alert("You win!");
-        } else if (myNumber >= randomNumber) {
-            alert("You lose!")
-        }
+
+        $("#myNumber").text(myNumber);
     }
     startGame();
-});
-
-
-
-
-
-
+}
+);
 
 //Game Logic
 

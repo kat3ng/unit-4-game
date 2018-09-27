@@ -1,0 +1,13 @@
+.container {
+    width: 980px;
+    height: auto;
+    border: 3px solid gray;
+    margin: 75px;
+    padding: 50px;
+}
+
+img {
+    display: inline-flex;
+    width: 75px;
+    width: 75px;
+}

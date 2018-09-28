@@ -7,6 +7,8 @@ $(document).ready(function () {
     var myNumber;
     var newNumber;
 
+    $('#wins-counter').text("Wins: " + wins);
+    $('#losses-counter').text("Losses: " + losses);
 
 
     //wrapping a startGame option aroud functions -- call start game
@@ -14,10 +16,7 @@ $(document).ready(function () {
     function startGame() {
         var targetNumber = 0;
         var myNumber = 0;
-        var wins = 0;
-        var losses = 0;
-        $('#wins-counter').text(wins);
-        $('#losses-counter').text(losses);
+        $("#my-number, #target-number").empty();
 
 
         //create randomly generated number
@@ -32,16 +31,16 @@ $(document).ready(function () {
             myNumber = myNumber + gem1;
             // console.log("newNumber = " + myNumber);
             $("#my-number").text(myNumber);
-
             if (myNumber === targetNumber) {
                 alert("You win!");
                 wins++;
+                startGame();
             }
-            else if (myNumber > targetNumber) {
-                alert("Looks like you're going to have to try again")
+            else if (myNumber >= targetNumber) {
+                alert("Looks like you're going to have to try again!")
                 losses++;
+                startGame();
             }
-
         })
 
 
@@ -54,12 +53,13 @@ $(document).ready(function () {
             if (myNumber === targetNumber) {
                 alert("You win!");
                 wins++;
+                startGame();
             }
-            else if (myNumber > targetNumber) {
-                alert("Looks like you're going to have to try again")
+            else if (myNumber >= targetNumber) {
+                alert("Looks like you're going to have to try again!")
                 losses++;
+                startGame();
             }
-
         })
 
 
@@ -72,12 +72,13 @@ $(document).ready(function () {
             if (myNumber === targetNumber) {
                 alert("You win!");
                 wins++;
+                startGame();
             }
-            else if (myNumber > targetNumber) {
-                alert("Looks like you're going to have to try again")
+            else if (myNumber >= targetNumber) {
+                alert("Looks like you're going to have to try again!")
                 losses++;
+                startGame();
             }
-
         })
 
 
@@ -99,11 +100,9 @@ $(document).ready(function () {
             }
         })
     }
-    startGame();
+
     //reset function
-    $("#start-btn").on("click", function () {
-        startGame();
-    })
+    $("#start-btn").on("click", startGame());
 });
 
 

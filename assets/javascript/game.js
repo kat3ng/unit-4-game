@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     $('#wins-counter').text(wins);
     $('#losses-counter').text(losses);
-    $("#my-number").text(myNumber);
+
 
     //wrapping a startGame option aroud functions -- call start game
 
@@ -22,40 +22,53 @@ $(document).ready(function () {
         var gem1 = Math.floor(Math.random() * 11 + 1);
         $("#gem1-btn").on("click", function () {
             console.log(gem1);
-            //add crystal value to myNumber
-            var gem1Value = parseInt(gem1);
-            myNumber += gem1Value;
+
+            $("#my-number").val("myNumber");
         })
 
         var gem2 = Math.floor(Math.random() * 11 + 1);
         $("#gem2-btn").on("click", function () {
             console.log(gem2);
-            //add crystal value to myNumber
-            var gem2Value = parseInt(gem2);
-            myNumber += gem2Value;
         })
 
         var gem3 = Math.floor(Math.random() * 11 + 1);
         $("#gem3-btn").on("click", function () {
             console.log(gem3);
-            //add crystal value to myNumber
-            var gem3Value = parseInt(gem3);
-            myNumber += gem3Value;
         })
+
 
         var gem4 = Math.floor(Math.random() * 11 + 1);
         $("#gem4-btn").on("click", function () {
             console.log(gem4);
-            //add crystal value to myNumber
-            var gem4Value = parseInt(gem4);
-            myNumber += gem4Value;
         })
 
-        $("#myNumber").text(myNumber);
+        //game logic
+        $(".gem").on("click", function () {
+            // parseInt(($(this).attr(“data - gemvalue”));
+            console.log(gemValue);
+            console.log(myNumber);
+            myNumber += gemValue;
+
+
+
+            //compare the two numbers
+            //if the number is equal to the target number increase wins
+            if (myNumber === targetNumber) {
+                wins++;
+                //if the number is greater than the target number losses
+            }
+            else if (myNumber >= targetNumber) {
+                losses++;
+            }
+
+        })
     }
     startGame();
-}
-);
+});
 
-//Game Logic
+//Reset Game
+
+// function resetGame {
+
+// }
 

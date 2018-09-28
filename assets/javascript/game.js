@@ -7,6 +7,7 @@ $(document).ready(function () {
     var myNumber;
     var newNumber;
 
+    //use jquery to replace the text with these values
     $('#wins-counter').text("Wins: " + wins);
     $('#losses-counter').text("Losses: " + losses);
 
@@ -16,6 +17,8 @@ $(document).ready(function () {
     function startGame() {
         var targetNumber = 0;
         var myNumber = 0;
+        var wins = 0;
+        var losses = 0;
         $("#my-number, #target-number").empty();
 
 
@@ -33,6 +36,7 @@ $(document).ready(function () {
             $("#my-number").text(myNumber);
             if (myNumber === targetNumber) {
                 alert("You win!");
+                //couldn't get my incrementer to work either :(
                 wins++;
                 startGame();
             }
@@ -95,7 +99,7 @@ $(document).ready(function () {
             }
             else if (myNumber >= targetNumber) {
                 alert("Looks like you're going to have to try again!")
-                losses++;
+                losses--;
                 startGame();
             }
         })
@@ -103,6 +107,15 @@ $(document).ready(function () {
 
     //reset function
     $("#start-btn").on("click", startGame());
+    //I used the code above to act as my reset function, only because I tried to make several reset buttons and was unsuccessful.  Each time it would break my code when I turned the above into a function like so
+    // function reset() {
+    //     $("#start-btn").on("click", startGame());
+    //     var targetNumber = 0;
+    //     var myNumber = 0;
+    //     var wins = 0;
+    //     var losses = 0;
+    //     $("#my-number, #target-number").empty();
+    // }
 });
 
 

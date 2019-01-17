@@ -32,7 +32,10 @@ In this assignment, we were required to create a fun and interactive game for we
 
      * The game hides this amount until the player clicks a crystal.
      * When they do click one, update the player's score counter.
+
     ![Crystal Collector](/assets/images/score-counter.png)
+
+    
    * The player wins if their total score matches the random number from the beginning of the game.
 
    * The player loses if their score goes above the random number.

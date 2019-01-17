@@ -1,123 +1,97 @@
-
 $(document).ready(function () {
-    //variables to hold game values
+
+    //initilize variables
     var wins = 0;
     var losses = 0;
-    var targetNumber;
-    var myNumber;
-    var newNumber;
-
-    //use jquery to replace the text with these values
-    $('#wins-counter').text("Wins: " + wins);
-    $('#losses-counter').text("Losses: " + losses);
-
-
-    //wrapping a startGame option aroud functions -- call start game
-
-    function startGame() {
-        var targetNumber = 0;
-        var myNumber = 0;
-        var wins = 0;
-        var losses = 0;
-        $("#my-number, #target-number").empty();
+    var result = 0;
+    var randomNumberGenerator;
+    var gem1;
+    var gem2;
+    var gem3;
+    var gem4;
 
 
-        //create randomly generated number
-        var targetNumber = Math.floor(Math.random() * (120 - 19)) + 19;
-        $("#target-number").text(targetNumber);
-        console.log(targetNumber);
+    //create a game start function: goal result, assigning numbers to buttons
+    function gameReset() {
+        result = 0;
+        randomNumber();
+        randomGemValues();
+        $("#result").empty();
+    };
 
-        // assign random number to crystals
-        var gem1 = Math.floor(Math.random() * 11 + 1);
-        $("#gem1-btn").on("click", function () {
-            console.log("Gem 1 Value: " + gem1);
-            myNumber = myNumber + gem1;
-            // console.log("newNumber = " + myNumber);
-            $("#my-number").text(myNumber);
-            if (myNumber === targetNumber) {
-                alert("You win!");
-                //couldn't get my incrementer to work either :(
-                wins++;
-                startGame();
-            }
-            else if (myNumber >= targetNumber) {
-                alert("Looks like you're going to have to try again!")
-                losses++;
-                startGame();
-            }
-        })
+    //call gameRest function to set the state of the app
+    gameReset();
 
+    //have the computer choose a number at random
+    function randomNumber() {
+        randomNumberGenerator = Math.floor(Math.random() * 65 + 35);
+        $("#random-number").text(randomNumberGenerator);
+        console.log("Random Number: ", randomNumberGenerator);
+    };
 
-        var gem2 = Math.floor(Math.random() * 11 + 1);
-        $("#gem2-btn").on("click", function () {
-            console.log("Gem 2 Value: " + gem2);
-            myNumber = myNumber + gem2;
-            console.log("newNumber = " + myNumber);
-            $("#my-number").text(myNumber);
-            if (myNumber === targetNumber) {
-                alert("You win!");
-                wins++;
-                startGame();
-            }
-            else if (myNumber >= targetNumber) {
-                alert("Looks like you're going to have to try again!")
-                losses++;
-                startGame();
-            }
-        })
+    //set up a function to be called to generate a random number for all buttons
+    function randomGemValues() {
+        gem1 = Math.floor(Math.random() * 19 + 1);
+        gem2 = Math.floor(Math.random() * 19 + 1);
+        gem3 = Math.floor(Math.random() * 19 + 1);
+        gem4 = Math.floor(Math.random() * 19 + 1);
 
+    };
 
-        var gem3 = Math.floor(Math.random() * 11 + 1);
-        $("#gem3-btn").on("click", function () {
-            console.log(gem3);
-            myNumber = myNumber + gem3;
-            console.log("newNumber = " + myNumber);
-            $("#my-number").text(myNumber);
-            if (myNumber === targetNumber) {
-                alert("You win!");
-                wins++;
-                startGame();
-            }
-            else if (myNumber >= targetNumber) {
-                alert("Looks like you're going to have to try again!")
-                losses++;
-                startGame();
-            }
-        })
+    //call the randomGemValues function to set the number values for each button
+    randomGemValues();
 
+    //set up a function to be called whenever the user wins or loses
+    function results() {
 
-        var gem4 = Math.floor(Math.random() * 11 + 1);
-        $("#gem4-btn").on("click", function () {
-            console.log(gem4);
-            myNumber = myNumber + gem4;
-            console.log("newNumber = " + myNumber);
-            $("#my-number").text(myNumber);
-            if (myNumber === targetNumber) {
-                alert("You win!");
-                wins++;
-                startGame();
-            }
-            else if (myNumber >= targetNumber) {
-                alert("Looks like you're going to have to try again!")
-                losses--;
-                startGame();
-            }
-        })
-    }
+        if (result === randomNumberGenerator) {
+            wins++;
+            $("#result-message").text('Hooray! You won!');
+            $("#wins-counter").text("Wins: " + wins);
+            gameReset();
 
-    //reset function
-    $("#start-btn").on("click", startGame());
-    //I used the code above to act as my reset function, only because I tried to make several reset buttons and was unsuccessful.  Each time it would break my code when I turned the above into a function like so
-    // function reset() {
-    //     $("#start-btn").on("click", startGame());
-    //     var targetNumber = 0;
-    //     var myNumber = 0;
-    //     var wins = 0;
-    //     var losses = 0;
-    //     $("#my-number, #target-number").empty();
-    // }
+        } else if (result > randomNumberGenerator) {
+            losses++;
+            $("#result-message").text("Oh dear, you're going to have to try again...");
+            $("#losses-counter").text("Losses: " + losses);
+            gameReset();
+        };
+    };
+
+    //set up the on click event that adds button values and displays the result
+    $("#gem1-btn").on("click", function () {
+        result += parseInt(gem1);
+        $("#result").text(result);
+        results()
+        console.log("gem 1: ", gem1, "result: ", result);
+    });
+
+    $("#gem2-btn").on("click", function () {
+        result += parseInt(gem2);
+        $("#result").text(result);
+        results()
+        console.log("gem 2: ", gem2, "result: ", result);
+    });
+
+    $("#gem3-btn").on("click", function () {
+        result += parseInt(gem3);
+        $("#result").text(result);
+        results()
+        console.log("gem 3: ", gem3, "result: ", result);
+    });
+
+    $("#gem4-btn").on("click", function () {
+        result += parseInt(gem4);
+        $("#result").text(result);
+        results()
+        console.log("gem 4: ", gem4, "result: ", result);
+    });
+
+    //create an additional on click event for a reset button
+    $("#action-btn").on("click", function () {
+
+        // Call gameReset function to reset the state of our app
+        gameReset();
+    });
+
 });
-
-
-// }
-

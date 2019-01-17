@@ -11,7 +11,7 @@ $(document).ready(function () {
     var gem4;
 
 
-    //create a game start function: goal result, assigning numbers to buttons
+    //create a game start function
     function gameReset() {
         result = 0;
         randomNumber();
@@ -19,7 +19,7 @@ $(document).ready(function () {
         $("#result").empty();
     };
 
-    //call gameRest function to set the state of the app
+    //call gameReset function to auto-restart the app after rounds 
     gameReset();
 
     //have the computer choose a number at random
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     };
 
-    //call the randomGemValues function to set the number values for each button
+    //call the randomGemValues function to set the number values for each gem
     randomGemValues();
 
     //set up a function to be called whenever the user wins or loses
@@ -58,7 +58,7 @@ $(document).ready(function () {
         };
     };
 
-    //set up the on click event that adds button values and displays the result
+    //set up the on click event that adds gem values and displays the result
     $("#gem1-btn").on("click", function () {
         result += parseInt(gem1);
         $("#result").text(result);
@@ -87,7 +87,7 @@ $(document).ready(function () {
         console.log("gem 4: ", gem4, "result: ", result);
     });
 
-    //create an additional on click event for a reset button
+    //set a reset function to the start button so the user can force reset 
     $("#action-btn").on("click", function () {
 
         // Call gameReset function to reset the state of our app

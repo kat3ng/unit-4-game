@@ -1,9 +1,5 @@
-@font-face {
-    
-    font-family: 'Yanone"';
-    src: url('https://fonts.googleapis.com/css?family=Monoton|Yanone+Kaffeesatz');;
-} 
-    
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
 body {
     background-image: url("https://cdn.shopify.com/s/files/1/0533/2089/files/5-websites-to-download-free-subtle-textures-subtle.jpg?5724472906039650661");
     /* background-size: cover; */
@@ -15,7 +11,7 @@ h1 {
 }
 
 h3 {
-    font-family: 'Yanone';
+    font-family: 'Poiret One', cursive;
 }
 
 img {
@@ -24,50 +20,61 @@ img {
     width: 100px;
 }
 
+.jumbotron {
+    font-size: 55px;
+    border: 3px solid gray;
+    background-image: url("https://cdn.shopify.com/s/files/1/0533/2089/files/5-websites-to-download-free-subtle-textures-subtle.jpg?5724472906039650661");
+}
+
 .container {
+    font-family: 'Poiret One', cursive;
     background: white;
-    font-family: 'Yanone';
+    font-family: 'Pioret';
     font-size: 20px;
     align-items: center;
-    width: 900px;
     height: auto;
     border: 3px solid gray;
-    margin: 75px;
     padding: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: 0, auto;
 }
+
 .card-header {
     font-family: 'Monoton', cursive;
-
 }
+
 .card-body {
-    margin: 50px;
-    padding: 10px;
+    font-family: 'Poiret One', cursive;
+    font-weight: bolder;
+    /* font-size: 20px; */
+    margin: 20px;
     margin-bottom: 5%;
     align-items: center;
-
 }
 
 .btn {
     margin-top: 20px;
-    padding:10px;
+    padding: 10px;
 }
 
 .yellow {
-	background-color: #F2CF66;
-	border-bottom: 5px solid #D1B358;
-	text-shadow: 0px -2px #D1B358;
+    background-color: #F2CF66;
+    border-bottom: 5px solid #D1B358;
+    text-shadow: 0px -2px #D1B358;
 }
+
 .animate {
-	transition: all 0.1s;
-	-webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
 }
 
 .action-button {
-	padding: 10px 40px;
-  margin-top: 5%;
-	border-radius: 10px;
-	font-family: 'Monoton', cursive;
-	font-size: 25px;
-	color: #FFF;
-	text-decoration: none;	
+    padding: 10px 40px;
+    margin-top: 5%;
+    border-radius: 10px;
+    font-family: 'Monoton', cursive;
+    font-size: 25px;
+    color: #FFF;
+    text-decoration: none;
 }
